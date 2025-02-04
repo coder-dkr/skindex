@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { getCatgories } from "../api/getCatgories";
 import useToggleModal from "../hooks/useToggleModal";
 import { useNavigate } from "react-router-dom";
-import { p } from "framer-motion/client";
+
 
 interface Category {
   image_url: string;
