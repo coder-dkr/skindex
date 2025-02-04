@@ -98,6 +98,8 @@ const SignUpModal = () => {
     }
   };
 
+
+
   if (!isModalOpen || token) return null;
 
   return (
@@ -129,7 +131,7 @@ const SignUpModal = () => {
             Glow naturally, care effortlessly.
           </p>
 
-          <form onSubmit={isSigningIn ? handleSignIn : handleLogin}>
+          <form  onSubmit={isSigningIn ? handleSignIn : handleLogin}>
             <div className="mb-4">
               <input
                 value={username}

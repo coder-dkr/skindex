@@ -33,6 +33,7 @@ const UpdateCategoryModal = () => {
     handleCloseModal();
   };
 
+
   if (!isModalOpen || token === "") return null;
 
   return (

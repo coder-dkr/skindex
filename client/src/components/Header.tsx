@@ -23,8 +23,9 @@ const Header: React.FC = () => {
 
   const handleOnClick = () => {
     if (token) {
-      LogoutUser();
-      navigate("/");
+      const logoutconfirm = confirm('Logout ?')
+      if(logoutconfirm) { LogoutUser();
+      navigate("/");}
       return;
     }
     setIsModalOpen(true);

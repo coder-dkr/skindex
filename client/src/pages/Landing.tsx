@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { getCatgories } from "../api/getCatgories";
 import useToggleModal from "../hooks/useToggleModal";
+import { useNavigate } from "react-router-dom";
+import { p } from "framer-motion/client";
 
 interface Category {
   image_url: string;
@@ -9,8 +11,11 @@ interface Category {
 
 const Landing = () => {
   const [categories, setCategories] = useState<Category[]>([]);
+  const token = localStorage.getItem('authToken')
 
   const { setIsModalOpen } = useToggleModal();
+  
+  const navigate = useNavigate()
 
   useEffect(() => {
     async function fetchCategories() {
@@ -26,8 +31,15 @@ const Landing = () => {
     fetchCategories();
   }, []);
 
-  const AllowedIfLogin = () => {
-    setIsModalOpen(true);
+  const AllowedIfLogin = (value : string) => {
+    if(token) {
+      localStorage.setItem('category',value)
+      navigate('/home')
+    }
+    else{
+      setIsModalOpen(true);
+    }
+      
   };
 
   return (
@@ -43,17 +55,18 @@ const Landing = () => {
         </div>
         <div>
           <ul className="flex items-center gap-16">
-            {categories?.length > 0 &&
-              categories?.map((category) => (
+            {categories?.length > 0 ?
+              (categories?.map((category) => (
                 <li
-                  onClick={AllowedIfLogin}
+                  onClick={() => AllowedIfLogin(category.name)}
                   key={category?.name}
                   className="flex flex-col items-center gap-3 cursor-pointer"
                 >
                   <img className="w-28 h-28" src={category?.image_url} />
                   <p className="font-[16px] text-center">{category.name}</p>
                 </li>
-              ))}
+              ))) : 
+              (<p>Loading..</p>)}
           </ul>
         </div>
       </div>
