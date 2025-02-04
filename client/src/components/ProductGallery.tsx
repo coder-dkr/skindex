@@ -12,14 +12,17 @@ interface Product {
 
 interface ProductGalleryProps {
   category?: boolean;
-  isSearchResults? : boolean;
+  isSearchResults?: boolean;
 }
 
-const ProductGallery: React.FC<ProductGalleryProps> = ({ category, isSearchResults }) => {
+const ProductGallery: React.FC<ProductGalleryProps> = ({
+  category,
+  isSearchResults,
+}) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [categoryProducts, setCategoryProducts] = useState<Product[]>([]);
 
-  const { searchResults} = useSearch()
+  const { searchResults } = useSearch();
 
   useEffect(() => {
     async function fetchProducts() {
@@ -29,7 +32,9 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({ category, isSearchResul
         const data = await getProducts();
 
         if (category) {
-          const orderedData = data.filter((prod) => prod.category === selectedCategory);
+          const orderedData = data.filter(
+            (prod) => prod.category === selectedCategory
+          );
           setCategoryProducts(orderedData);
           console.log(category);
         }
@@ -47,16 +52,20 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({ category, isSearchResul
     };
   }, [category]);
 
- 
   if (isSearchResults) {
     return (
       <div className="w-full grid grid-cols-5 gap-x-5 gap-y-12">
-        {searchResults?.length > 0 ? (searchResults?.map((product: Product) => (
-          <div key={product.title} className="w-full flex justify-center items-center">
-            <ProductCard {...product} />
-          </div>
-        ))) : (
-            <p className="px-8 text-gray-500">No Products</p>
+        {searchResults?.length > 0 ? (
+          searchResults?.map((product: Product) => (
+            <div
+              key={product.title}
+              className="w-full flex justify-center items-center"
+            >
+              <ProductCard {...product} />
+            </div>
+          ))
+        ) : (
+          <p className="px-8 text-gray-500">No Products</p>
         )}
       </div>
     );
@@ -67,17 +76,25 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({ category, isSearchResul
       {categoryProducts.length > 0 && (
         <div className="w-full grid grid-cols-5 gap-x-5 gap-y-12 mb-10">
           {categoryProducts.map((product: Product) => (
-            <div key={product.title} className="w-full flex justify-center items-center">
+            <div
+              key={product.title}
+              className="w-full flex justify-center items-center"
+            >
               <ProductCard {...product} />
             </div>
           ))}
         </div>
       )}
-      {categoryProducts.length > 0 && <p className="text-[#A4A4A4] text-xl px-8 mb-4">Our Other Products</p>}
+      {categoryProducts.length > 0 && (
+        <p className="text-[#A4A4A4] text-xl px-8 mb-4">Our Other Products</p>
+      )}
       <div className="w-full grid grid-cols-5 gap-x-5 gap-y-12">
         {products.length > 0 ? (
           products.map((product: Product) => (
-            <div key={product.title} className="w-full flex justify-center items-center">
+            <div
+              key={product.title}
+              className="w-full flex justify-center items-center"
+            >
               <ProductCard {...product} />
             </div>
           ))

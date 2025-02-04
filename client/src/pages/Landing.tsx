@@ -10,26 +10,25 @@ interface Category {
 const Landing = () => {
   const [categories, setCategories] = useState<Category[]>([]);
 
-  const {setIsModalOpen} = useToggleModal()
+  const { setIsModalOpen } = useToggleModal();
 
   useEffect(() => {
     async function fetchCategories() {
       try {
-
-        const data: Category[] = await getCatgories(); 
+        const data: Category[] = await getCatgories();
         setCategories(data);
       } catch (err) {
         console.error("Failed to fetch categories:", err);
-        setCategories([]); 
+        setCategories([]);
       }
     }
-  
-    fetchCategories(); 
-  }, []); 
+
+    fetchCategories();
+  }, []);
 
   const AllowedIfLogin = () => {
-    setIsModalOpen(true)
-  }
+    setIsModalOpen(true);
+  };
 
   return (
     <section className="h-[37rem] bg-white">
@@ -44,12 +43,17 @@ const Landing = () => {
         </div>
         <div>
           <ul className="flex items-center gap-16">
-            {categories?.length > 0 && categories?.map((category) => (
-              <li onClick={AllowedIfLogin} key={category?.name} className="flex flex-col items-center gap-3 cursor-pointer">
-                <img className="w-28 h-28" src={category?.image_url} />
-                <p className="font-[16px] text-center">{category.name}</p>
-              </li>
-            ))}
+            {categories?.length > 0 &&
+              categories?.map((category) => (
+                <li
+                  onClick={AllowedIfLogin}
+                  key={category?.name}
+                  className="flex flex-col items-center gap-3 cursor-pointer"
+                >
+                  <img className="w-28 h-28" src={category?.image_url} />
+                  <p className="font-[16px] text-center">{category.name}</p>
+                </li>
+              ))}
           </ul>
         </div>
       </div>

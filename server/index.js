@@ -54,8 +54,8 @@ dotenv.config();
 
 const app = express();
 const PORT = 8000;
-const MONGO_URI = process.env.MONGO_URI;
-const JWT_SECRET = process.env.JWT_SECRET;
+const MONGO_URI = "mongodb+srv://dhruvakr9001:NWbESmApidgz7EgS@skindex-db.hjsa4.mongodb.net/?retryWrites=true&w=majority&appName=skindex-db";
+const JWT_SECRET = 'b5e9fa8994d03e6be8e8d38dae4fcb97';
 
 // Middleware
 app.use(express.json());

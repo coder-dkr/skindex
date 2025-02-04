@@ -4,8 +4,8 @@ import useToggleModal from "../hooks/useToggleModal";
 
 const UpdateCategoryModal = () => {
   const categories = ["Face", "Acne", "Pigmentation", "Wrinkles", "Under-eye"];
-  const { isModalOpen  , setIsModalOpen} = useToggleModal()
-  const token = localStorage.getItem('authToken') || ''
+  const { isModalOpen, setIsModalOpen } = useToggleModal();
+  const token = localStorage.getItem("authToken") || "";
 
   const [selectedCategory, setSelectedCategory] = useState<string>(
     categories[0]
@@ -23,20 +23,18 @@ const UpdateCategoryModal = () => {
   }, [isModalOpen]);
 
   const handleCloseModal = () => {
-    setIsModalOpen(false)
-  }
+    setIsModalOpen(false);
+  };
 
-
-  const handleUpdateCategory = (e : React.FormEvent) => {
-    e.preventDefault(); 
-    localStorage.setItem('category' , selectedCategory)
+  const handleUpdateCategory = (e: React.FormEvent) => {
+    e.preventDefault();
+    localStorage.setItem("category", selectedCategory);
     window.dispatchEvent(new Event("storage"));
-    handleCloseModal()
+    handleCloseModal();
+  };
 
-  }
+  if (!isModalOpen || token === "") return null;
 
-  if (!isModalOpen || token === '') return null;
- 
   return (
     <>
       <div

@@ -4,8 +4,7 @@ import useSearch from "../hooks/useSearch"
 
 const Search = () => {
 
-    const {searchResults , Query} = useSearch()
-    console.log(searchResults)
+    const {Query} = useSearch()
 
   return (
     <section className="bg-white py-10 pt-4 px-24 mb-[16.3rem]">
