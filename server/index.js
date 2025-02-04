@@ -53,7 +53,7 @@ export default insertProductsIfNotExist
 dotenv.config();
 
 const app = express();
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 const MONGO_URI = "mongodb+srv://dhruvakr9001:NWbESmApidgz7EgS@skindex-db.hjsa4.mongodb.net/?retryWrites=true&w=majority&appName=skindex-db";
 const JWT_SECRET = 'b5e9fa8994d03e6be8e8d38dae4fcb97';
 
