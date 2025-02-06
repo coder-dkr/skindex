@@ -36,8 +36,10 @@ const Home = () => {
     setIsModalOpen(true);
   };
 
-  return (
-    <section className="bg-white py-10 px-24 mb-[16.3rem]">
+  return ( //  mb-[16.3rem] 
+    <section className="bg-white py-10 px-24
+    
+     flex-1">
       <div className="px-8">
         <h1 className="text-[32px] text-[#785BF8] font-semibold">
           Hey <span className="font-normal">{username}</span>

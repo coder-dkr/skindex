@@ -4,6 +4,7 @@ import { useNavigate  , useLocation} from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getSearchedProducts } from "../api/search";
 import useSearch from "../hooks/useSearch";
+import { Link } from "react-router-dom";
 
 const Header: React.FC = () => {
   const { setIsModalOpen } = useToggleModal();
@@ -58,9 +59,9 @@ const Header: React.FC = () => {
 
   return (
     <header className="w-full h-24 bg-[#785BF8] flex items-center justify-between px-11 sticky top-0 z-[39]">
-      <div>
+      <Link to='/'>
         <img src="/assets/skindex.svg" />
-      </div>
+      </Link>
 
       <div className="flex w-[41rem] items-center bg-white rounded-full  px-7 gap-2">
         <button className="cursor-pointer">

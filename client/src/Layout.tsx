@@ -11,11 +11,15 @@ const Layout = () => {
   return (
     <SignInContextProvider>
       <SearchContextProvider>
-        <Header />
-        <Outlet />
-        <SignInModal />
-        <UpdateCategoryModal />
-        <Footer />
+      <div className="flex flex-col min-h-screen">
+          <Header />
+          <div className="flex-1">
+            <Outlet />
+          </div>
+          <SignInModal />
+          <UpdateCategoryModal />
+          <Footer />
+        </div>
       </SearchContextProvider>
     </SignInContextProvider>
   );
