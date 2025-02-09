@@ -45,7 +45,7 @@ const Landing = () => {
   // h-[37rem]
 
   return (
-    <section className="  flex-1 flex flex-col">
+    <section className="flex-1 flex flex-col">
       <div className="w-full h-full py-28 pt-20 flex flex-col gap-20 justify-center items-center">
         <div className="text-center">
           <h1 className="text-[32px] font-medium text-[#5F5858]">
